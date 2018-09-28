@@ -19,8 +19,7 @@
 		 	<th>Tipo</th>
 		 	<th>Paga</th>
 		 	<th>Data de Pagamento</th>
-		 	<th>Remover</th>
-		 	<th>Alterar</th>
+		 	<th>Ações</th>
 		  </tr>
 		 
 		 <c:forEach items="${todasContas}" var="conta">
@@ -39,10 +38,9 @@
 		  	</td>
 		  	<td><fmt:formatDate value="${conta.dataPagamento.time}" pattern="dd/MM/yyyy"/> </td>
 		  	<td>
+		  		<a href="mostraConta?id=${conta.id}">Alterar</a> |
 		  		<a href="removerConta?id=${conta.id}">Remover</a>
-		  	</td>
-		  	<td> 
-		  	<a href="mostraConta?id=${conta.id}">Alterar</a>
+		  		
 		  	</td>
 		  </tr>
 		  </c:forEach>

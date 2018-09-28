@@ -2,20 +2,26 @@ package br.com.caelum.contas.modelo;
 
 import java.util.Calendar;
 
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Conta {
 	
-	private Long id;
-
-	private String descricao;
-
-	private boolean paga;
+	//As mensagens de validações vem do arquivo ValidationMessages.properties nos SRC
 	
-	private double valor;
+	private Long id;
+	@NotNull(message="{conta.form.descricao.obrigatoria}")
+	@Size(min=5, message="{conta.form.descricao.tamanho}")
+	private String descricao;
+	private boolean paga;
+	@NotNull(message="{conta.form.valor}")
+	@Digits(integer=10, fraction=2)
+	private Double valor;
 	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Calendar dataPagamento;
-	
 	private TipoDaConta tipo;
 
 	public Long getId() {
@@ -58,11 +64,11 @@ public class Conta {
 		this.tipo = tipo;
 	}
 
-	public double getValor() {
+	public Double getValor() {
 		return valor;
 	}	
 	
-	public void setValor(double valor) {
+	public void setValor(Double valor) {
 		this.valor = valor;
 	}
 
