@@ -19,6 +19,8 @@
 		 	<th>Tipo</th>
 		 	<th>Paga</th>
 		 	<th>Data de Pagamento</th>
+		 	<th>Remover</th>
+		 	<th>Alterar</th>
 		  </tr>
 		 
 		 <c:forEach items="${todasContas}" var="conta">
@@ -31,17 +33,25 @@
 		  		<c:if test="${conta.paga eq false}">
 		  			Não paga
 		  		</c:if>
-		  		<c:if test="${conta.paga eq true} ">
+		  		<c:if test="${conta.paga eq true}">
 		  			Paga
 		  		</c:if>
 		  	</td>
 		  	<td><fmt:formatDate value="${conta.dataPagamento.time}" pattern="dd/MM/yyyy"/> </td>
+		  	<td>
+		  		<a href="removerConta?id=${conta.id}">Remover</a>
+		  	</td>
+		  	<td> 
+		  	<a href="mostraConta?id=${conta.id}">Alterar</a>
+		  	</td>
 		  </tr>
 		  </c:forEach>
+		  
+		  
 	
 	
 	
 	</table>
-
+	<a href="form">Adicionar nova conta</a>
 </body>
 </html>

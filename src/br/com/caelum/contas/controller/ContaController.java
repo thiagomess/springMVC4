@@ -24,7 +24,7 @@ public class ContaController {
 		
 	    ContaDAO dao = new ContaDAO();
 	    dao.adiciona(conta);
-	    return "conta/conta-adicionada";
+	    return "redirect:listaContas"; //redireciona para a o metodo lista
 	  }
 	
 	
@@ -38,8 +38,34 @@ public class ContaController {
 		mv.addObject("todasContas", contas); //adiciona a lista
 		
 		return mv;
+	}
+	
+	@RequestMapping("/removerConta")
+	public String remover(Conta conta) {
+		ContaDAO dao = new ContaDAO();
+		dao.remove(conta);
+		
+		return "redirect:listaContas"; //redireciona para a o metodo lista
+	}
+	
+	@RequestMapping("/mostraConta")
+	public String mostraConta(long id, Model model) {
+		ContaDAO dao = new ContaDAO();
+		model.addAttribute("conta", dao.buscaPorId(id));
+
+		return "conta/mostra";
+	}
+	
+	@RequestMapping("/alteraConta")
+	public String altera(Conta conta){
+		ContaDAO dao = new ContaDAO();
+		dao.altera(conta);
+		
+		return "redirect:listaContas";
 		
 	}
+	
+	
 	
 // A lista tambem pode ser feita desse modo, onde recebemos o Model no metodo como param	
 //	@RequestMapping("/listaContas")
