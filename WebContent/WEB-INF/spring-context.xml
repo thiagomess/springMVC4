@@ -14,6 +14,9 @@
 		base-package="br.com.caelum.contas" />
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler/> <!-- significa que as requisições poderam vim via AJAX  -->
+	<mvc:interceptors>
+		<bean class="br.com.caelum.contas.interceptor.AutorizadorInterceptor"></bean>
+	</mvc:interceptors>
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
