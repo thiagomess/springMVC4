@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,7 +17,10 @@ import br.com.caelum.contas.modelo.Conta;
 
 @Controller
 public class ContaController {
-
+	
+	@Autowired //Injeta o DAO
+	private ContaDAO dao;
+	
 	@RequestMapping("/form")
 	public String inicio() {
 		return "conta/formulario";
@@ -30,7 +34,6 @@ public class ContaController {
 			return "conta/formulario";
 		}
 		System.out.println("Cadastrando conta: " + conta.getDescricao());
-		ContaDAO dao = new ContaDAO();
 		dao.adiciona(conta);
 		return "redirect:listaContas"; // redireciona para a o metodo lista
 	}
@@ -39,7 +42,6 @@ public class ContaController {
 	@RequestMapping("/listaContas")
 	public ModelAndView lista() {
 
-		ContaDAO dao = new ContaDAO();
 		List<Conta> contas = dao.lista();
 		ModelAndView mv = new ModelAndView("conta/lista"); // Adiciona o caminho da pagina no construtor
 		mv.addObject("todasContas", contas); // adiciona a lista
@@ -49,7 +51,6 @@ public class ContaController {
 
 	@RequestMapping("/removerConta")
 	public String remover(Conta conta) {
-		ContaDAO dao = new ContaDAO();
 		dao.remove(conta);
 
 		return "redirect:listaContas"; // redireciona para a o metodo lista
@@ -57,7 +58,6 @@ public class ContaController {
 
 	@RequestMapping("/mostraConta")
 	public String mostraConta(long id, Model model) {
-		ContaDAO dao = new ContaDAO();
 		model.addAttribute("conta", dao.buscaPorId(id));
 
 		return "conta/mostra";
@@ -65,7 +65,6 @@ public class ContaController {
 
 	@RequestMapping("/alteraConta")
 	public String altera(Conta conta) {
-		ContaDAO dao = new ContaDAO();
 		dao.altera(conta);
 
 		return "redirect:listaContas";
@@ -75,7 +74,6 @@ public class ContaController {
 	//Recebe solicitação do botao pagar, pelo ajax e responde com status 200 para informar que deu certo
 	@RequestMapping("/pagarConta")
 	public void pagar(long id, HttpServletResponse response) {
-		ContaDAO dao = new ContaDAO();
 		dao.paga(id);
 		response.setStatus(200);
 	}
@@ -83,7 +81,6 @@ public class ContaController {
 // A lista tambem pode ser feita desse modo, onde recebemos o Model no metodo como param	
 //	@RequestMapping("/listaContas")
 //	public String lista(Model mv) {
-//	  ContaDAO dao = new ContaDAO();
 //	  List<Conta> contas = dao.lista();
 //
 //	  mv.addAttribute("todasContas", contas);
