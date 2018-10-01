@@ -6,12 +6,12 @@
 <html>
 <script type="text/javascript">
 
-function optionCheck(){
-    var option = document.getElementById("options").value;
-    if(option == "SAIDA"){
+function seleciona(){
+    var opcao = document.getElementById("options").value;
+    if(opcao == "SAIDA"){
         document.getElementById("divHidden").hidden=false;
     }
-    if(option == "ENTRADA"){
+    if(opcao == "ENTRADA"){
     	document.getElementById("paga").checked = '';
     	document.getElementById("dataPagamento").value=""; 
     	document.getElementById("divHidden").hidden=true;
@@ -22,7 +22,7 @@ function optionCheck(){
 <meta charset="UTF-8">
 <title>Alterar Conta</title>
 </head>
-<body onload="optionCheck()">
+<body onload="seleciona()">
 	<h3>Altera Conta</h3>
 	
 	<form action="alteraConta" method="post">
@@ -31,7 +31,7 @@ function optionCheck(){
 		<br/>
 		Valor:<input name="valor" type="text" value="${conta.valor}" />	<br/>
 		Tipo:<br/>
-		<select id="options" name="tipo" onchange="optionCheck()" >
+		<select id="options" name="tipo" onchange="seleciona()" >
 			<option value="ENTRADA" ${conta.tipo=='ENTRADA' ? 'selected':''}>Entrada</option>
             <option value="SAIDA" ${conta.tipo=='SAIDA' ? 'selected':''}>Saída</option>
 		</select>
