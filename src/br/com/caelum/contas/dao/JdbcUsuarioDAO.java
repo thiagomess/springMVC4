@@ -8,10 +8,10 @@ import java.sql.SQLException;
 import br.com.caelum.contas.ConnectionFactory;
 import br.com.caelum.contas.modelo.Usuario;
 
-public class UsuarioDAO {
+public class JdbcUsuarioDAO {
 	private Connection connection;
 
-	public UsuarioDAO() {
+	public JdbcUsuarioDAO() {
 		try {
 			connection = new ConnectionFactory().getConnection();
 		} catch (SQLException e) {
