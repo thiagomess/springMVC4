@@ -1,2 +1,4 @@
+/.DS_Store
+/ValidationMessages.properties
 /br/
-/AutorizadorInterceptor.class
+/log4j.properties
