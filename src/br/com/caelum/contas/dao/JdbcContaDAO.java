@@ -18,12 +18,12 @@ import br.com.caelum.contas.modelo.Conta;
 import br.com.caelum.contas.modelo.TipoDaConta;
 
 @Repository
-public class ContaDAO {
+public class JdbcContaDAO implements ContaDAO {
 	
 	private Connection connection;
 	
 	@Autowired // Injetando Dependencia onde pega o DS do arquivo spring-context.xml
-	public ContaDAO(DataSource ds) {
+	public JdbcContaDAO(DataSource ds) {
 		try {
 			this.connection =  ds.getConnection();
 		} catch (SQLException e) {

@@ -1,2 +1,5 @@
-/br/
+/.DS_Store
 /META-INF/
+/ValidationMessages.properties
+/br/
+/log4j.properties
