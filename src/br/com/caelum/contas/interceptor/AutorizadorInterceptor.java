@@ -10,7 +10,7 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 
 		String uri = request.getRequestURI();
-		if (uri.contains("loginForm") || uri.contains("efetuaLogin") || uri.contains("resources")) {
+		if (uri.contains("loginForm") || uri.contains("efetuaLogin") || uri.contains("criaUsuario") || uri.contains("resources")) {
 			return true;
 		}
 

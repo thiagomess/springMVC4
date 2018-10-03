@@ -6,7 +6,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,10 +18,13 @@ import br.com.caelum.contas.dao.ContaDAO;
 import br.com.caelum.contas.modelo.Conta;
 
 @Controller
+@Transactional
 public class ContaController {
 	
-	@Autowired //Injeta o DAO
+	@Autowired //Injeta a interface DAO
+	@Qualifier("jpaContaDAO") //Informo que vou usar o JPA
 	private ContaDAO dao;
+	
 	
 	@RequestMapping("/form")
 	public String inicio() {

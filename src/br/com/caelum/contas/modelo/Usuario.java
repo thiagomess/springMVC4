@@ -1,9 +1,23 @@
 package br.com.caelum.contas.modelo;
 
-public class Usuario {
-	private String login;
-	private String senha;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
+
+@Entity
+public class Usuario {
+	
+	@Id
+	@Column(nullable=false)
+	@NotBlank
+	@NotNull
+	private String login;
+	@NotBlank
+	private String senha;
+	
 	public String getLogin() {
 		return login;
 	}

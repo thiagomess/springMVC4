@@ -2,16 +2,22 @@ package br.com.caelum.contas.modelo;
 
 import java.util.Calendar;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+@Entity
 public class Conta {
 	
 	//As mensagens de validações vem do arquivo ValidationMessages.properties nos SRC
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	@NotNull(message="{conta.form.descricao.obrigatoria}")
 	@Size(min=5, message="{conta.form.descricao.tamanho}")

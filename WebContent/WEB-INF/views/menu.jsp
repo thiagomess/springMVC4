@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Menu</title>
 </head>
 <body>
 	<h2>Página inicial da Lista de Contas</h2>
