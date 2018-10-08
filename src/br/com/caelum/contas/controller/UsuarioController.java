@@ -28,7 +28,7 @@ public class UsuarioController {
 
 		if (dao.existeUsuario(usuario)) {
 			session.setAttribute("usuarioLogado", usuario);
-			return "menu";
+			return "redirect:menu";
 		}
 		return "redirect:loginForm";
 	}

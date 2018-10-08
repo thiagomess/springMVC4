@@ -2,7 +2,6 @@ package br.com.caelum.contas.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.caelum.contas.dao.ContaDAO;
@@ -29,6 +29,11 @@ public class ContaController {
 	@RequestMapping("/form")
 	public String inicio() {
 		return "conta/formulario";
+	}
+	
+	@RequestMapping("/menu")
+	public String menu() {
+		return "conta/menu";
 	}
 
 	//Para efetuar a validação, precisamos marcar com a anotação @Valid e o BindingResult como parametro.
@@ -65,7 +70,7 @@ public class ContaController {
 	public String mostraConta(long id, Model model) {
 		model.addAttribute("conta", dao.buscaPorId(id));
 
-		return "conta/mostra";
+		return "conta/alterar";
 	}
 
 	@RequestMapping("/alteraConta")
@@ -77,10 +82,10 @@ public class ContaController {
 	}
 	
 	//Recebe solicitação do botao pagar, pelo ajax e responde com status 200 para informar que deu certo
+	@ResponseBody
 	@RequestMapping("/pagarConta")
-	public void pagar(long id, HttpServletResponse response) {
+	public void pagar(long id) {
 		dao.paga(id);
-		response.setStatus(200);
 	}
 
 // A lista tambem pode ser feita desse modo, onde recebemos o Model no metodo como param	
