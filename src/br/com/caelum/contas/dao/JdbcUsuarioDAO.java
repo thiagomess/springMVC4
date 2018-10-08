@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 import br.com.caelum.contas.ConnectionFactory;
 import br.com.caelum.contas.modelo.Usuario;
 
-
 @Repository
 public class JdbcUsuarioDAO implements UsuarioDAO {
+
 	private Connection connection;
 
 	public JdbcUsuarioDAO() {

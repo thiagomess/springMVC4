@@ -19,6 +19,7 @@ import br.com.caelum.contas.modelo.TipoDaConta;
 
 @Repository
 public class JdbcContaDAO implements ContaDAO {
+
 	
 	private Connection connection;
 	
