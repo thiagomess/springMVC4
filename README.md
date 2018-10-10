@@ -6,6 +6,6 @@ https://cursos.alura.com.br/certificate/05d86f52-be97-4b4d-9f25-036f95e7be53
 
 # Melhorias
 
-1- Alterado de JDBC para JPA e alterado o banco para MYSQL
+1- Alterado de JDBC para JPA e alterado o banco para MYSQL.
 
-2- Adicionado Bootstrap ao projeto
+2- Adicionado Bootstrap ao projeto.
